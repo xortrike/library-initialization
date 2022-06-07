@@ -73,7 +73,7 @@ Input
 
 Output
 
-```text
+```ini
 [owner]
 name = John Doe
 organization = Acme Widgets Inc.
