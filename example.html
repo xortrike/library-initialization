@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>INI</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style type="text/css">
+			textarea {width: 100%; box-sizing: border-box;}
+		</style>
+		<script type="text/javascript" src="source/initialization-library.js"></script>
+		<script type="text/javascript">
+			window.onload = () => {
+				let fileContent = document.getElementById("filecontent");
+				let fileResult = document.getElementById("fileresult");
+				const INI = new InitializationLibrary();
+
+				let iniObject = INI.getObject(fileContent.value);
+				// Add array to object group.
+				iniObject.logs = ['Connecting...', 'Working...', 'Closing...'];
+
+				fileResult.value = INI.getFileContent(iniObject);
+			}
+		</script>
+	</head>
+	<body>
+		<h1>INI - Initialization file</h1>
+		<p>Input</p>
+		<textarea id="filecontent" rows="12">; last modified 1 April 2001 by John Doe
+[owner]
+name = John Doe ; Value comment #1
+organization = Acme Widgets Inc. #  Value comment #1
+
+# Unix-style comment
+[database]
+; use IP address in case network name resolution is not working
+server = 192.0.2.62
+port = 143
+file = "payroll.dat"</textarea>
+		<p>Output</p>
+		<textarea id="fileresult" rows="12"></textarea>
+	</body>
+</html>
